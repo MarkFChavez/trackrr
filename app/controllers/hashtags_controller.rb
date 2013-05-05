@@ -3,8 +3,7 @@ class HashtagsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-  	@user = current_user
-  	@user.hashtag = Hashtag.new(params[:hashtag])
+  	@user = current_user.build_hashtag(params[:hashtag])
 
   	if @user.save
   		redirect_to root_path, :notice => "Hashtag modified!"

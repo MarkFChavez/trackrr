@@ -8,7 +8,7 @@
 			to something that you want. Cheers!
 		</p>
 		<%= form_for(@tag, :html => {:class => 'form-inline'}) do |f| %>
-			<%= f.text_field :name, :class => 'input-small', :placeholder => 'Tag' %> 
+			<%= f.text_field :name, :class => 'input-small', :placeholder => 'Tag', :required => "required" %> 
 			<%= f.submit "Change", :class => 'btn' %>
 		<% end %>
 		<hr />

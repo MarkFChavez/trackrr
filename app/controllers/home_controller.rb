@@ -11,8 +11,8 @@ class HomeController < ApplicationController
 	  	respond_with(@tweets)
 	else
 		@page_title = "#trackrr"
-	  	@tag = current_user.hashtag
-	  	@tweets = Twitter.search(@page_title, :lang => 'en', :count => 30).results
+	  	@tag = Hashtag.new
+	  	@tweets = Twitter.search(@tag.name, :lang => 'en', :count => 30).results
 	  	respond_with(@tweets)
 	end
   end

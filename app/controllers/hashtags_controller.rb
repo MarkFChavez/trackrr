@@ -14,9 +14,9 @@ class HashtagsController < ApplicationController
   end
 
   def update
-  	@user.hashtag = current_user.build_hashtag(params[:hashtag])
+  	@user = current_user.build_hashtag(params[:hashtag])
 
-  	if @user.update
+  	if @user.save
   		redirect_to root_path, :notice => "Hashtag modified!"
   	else
   		redirect_to root_path, :alert => "Oops! An error occurred while changing hashtag"

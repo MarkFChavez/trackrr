@@ -28,7 +28,7 @@
 								<div>
 									<label class="badge badge-important"> @<%= tweet.user.screen_name %> </label>
 									<div style="margin-top:5px">
-										<%= tweet.text %>
+										<%= auto_link tweet.text, :html => {:target => "_blank"} %>
 									</div>
 								</div>
 								<div class="clearfix"></div>

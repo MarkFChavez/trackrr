@@ -15,7 +15,7 @@ end
 
 gem 'devise'
 gem 'twitter'
-
+gem 'rails_autolink'
 
 # Gems used only for assets and not required
 # in production environments by default.

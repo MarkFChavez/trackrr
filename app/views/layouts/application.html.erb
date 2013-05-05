@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> <%= @page_title ||= "Trackrr" %> | Awesome! </title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="navbar navbar-fixed-top">
+				    <div class="navbar-inner">
+				    	<div class="container-fluid">
+				    		<%= link_to "T r a c k r r", root_path, :class => "brand" %>
+				    		<% if user_signed_in? %>
+					    		<ul class="nav">
+					    			<li> <%= link_to current_user.email, edit_user_registration_path %> </li>
+					    			<li> <%= link_to "Logout", destroy_user_session_path, :method => :delete %> </li>
+					    		</ul>
+				    		<% end %>
+						</div>
+				    </div>
+			</div>
+		</div>
+	</div>
+
+	
+	<% if notice %> 
+		<div style="margin-top:20px;" class="row-fluid">
+			<div class="span12">
+				<div class="alert alert-success"> 
+					<%= notice %> 
+				</div> 
+			</div>
+		</div>
+	<% end %>
+
+	<% if alert %> 
+		<div style="margin-top:20px;" class="row-fluid">
+			<div class="span12">
+				<div class="alert alert-error"> 
+					<%= alert %> 
+				</div> 
+			</div>
+		</div>
+	<% end %>
+
+	<div class="row-fluid">
+		<div class="span12">
+			<%= yield %>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

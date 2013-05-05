@@ -1,0 +1,44 @@
+
+<div class="row-fluid">
+	<div class="span12">
+		<hr />
+		<p style="font-weight:bold"> Change your Hashtag </p>
+		<p class="muted">
+			Note: If you are a new user, the default keyword will be 'twitter'. It is recommended that you change it 
+			to something that you want. Cheers!
+		</p>
+		<%= form_for(@tag, :html => {:class => 'form-inline'}) do |f| %>
+			<%= f.text_field :name, :class => 'input-small', :placeholder => 'Tag' %> 
+			<%= f.submit "Change", :class => 'btn' %>
+		<% end %>
+		<hr />
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+		<% if !@tweets.empty? %>
+			<p class="lead muted"> Displaying <%= pluralize @tweets.count, "result" %> </p>
+			<% @tweets.in_groups_of(4, false) do |tweet_tasks| %>
+				<div class="row-fluid">
+					<% for tweet in tweet_tasks %>
+						<div class="span3">
+							<div class="tweet-box">
+								<%= image_tag tweet.profile_image_url, :class => 'pull-left img-circle' %>
+								<div>
+									<label class="badge badge-important"> @<%= tweet.user.screen_name %> </label>
+									<div style="margin-top:5px">
+										<%= tweet.text %>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		<% else %>
+			No tweets returned or did you have any hashtag configured?
+		<% end %>
+	</div>
+</div>

@@ -3,9 +3,6 @@ class HashtagsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-  end
-
-  def update
   	@user = current_user
   	@user.hashtag = Hashtag.new(params[:hashtag])
 
@@ -14,5 +11,8 @@ class HashtagsController < ApplicationController
   	else
   		redirect_to root_path, :alert => "Oops! An error occurred while changing hashtag"
   	end
+  end
+
+  def update
   end
 end
